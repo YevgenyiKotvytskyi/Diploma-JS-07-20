@@ -5,6 +5,7 @@ import phonesMask from './modules/phonesMask';
 import sendForm from './modules/sendForm';
 import linkPravicy from './modules/linkPravicy';
 import formulaHint from './modules/formulaHint';
+import formulaSlider from './modules/formulaSlider';
 
 phoneShow();
 menuShow();
@@ -13,3 +14,4 @@ phonesMask();
 sendForm();
 linkPravicy();
 formulaHint();
+formulaSlider();
