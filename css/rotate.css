@@ -1,0 +1,3 @@
+.rotate:before {
+    transform: rotateX(180deg);
+  }

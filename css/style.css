@@ -6481,3 +6481,7 @@ strong {
 
 .slider-dots {
   display: none; }
+
+.rotate:before {
+  transform: rotateX(180deg);
+}
