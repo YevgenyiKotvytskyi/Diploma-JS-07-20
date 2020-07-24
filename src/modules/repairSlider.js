@@ -52,7 +52,6 @@ const repairSlider = () => {
         if (target.tagName.toLowerCase() === 'button') {
             if (smallScreen) {
                 for (let i = 0; i <  repairButtons.length; i++) {
-                    console.log('i: ', i);
                     if (repairButtons[i] === target) {
                         slidersIndex = i;
                         setSlideButton(i);

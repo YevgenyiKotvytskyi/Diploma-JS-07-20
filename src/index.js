@@ -7,6 +7,8 @@ import linkPravicy from './modules/linkPravicy';
 import formulaHint from './modules/formulaHint';
 import formulaSlider from './modules/formulaSlider';
 import repairSlider from './modules/repairSlider';
+import portfolioDesctop from './modules/portfolioDesctop';
+import portfolioMobile from './modules/portfolioMobile';
 
 phoneShow();
 menuShow();
@@ -17,3 +19,5 @@ linkPravicy();
 formulaHint();
 formulaSlider();
 repairSlider();
+portfolioDesctop();
+portfolioMobile();
