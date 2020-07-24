@@ -26,16 +26,13 @@ const repairSlider = () => {
             const current = sliders[i];
             if (i === index) {
                 current.style.display = 'block';
-                console.log('current-active: ', current);
             } else {
                 current.style.display = 'none';
-                console.log('current: ', current);
             }
         }
         totalCounter.textContent = activeSliders.length;
         activeSlide = 0;
         setActiveSlide(activeSlide);
-        console.log('activeSlides.length: ', activeSliders.length);
     };
 
     const setActiveSlide = index => {
@@ -50,39 +47,73 @@ const repairSlider = () => {
     };
 
     const handlerButton = e => {
+        //debugger;
         const target = e.target;
-
         if (target.tagName.toLowerCase() === 'button') {
-            for (let i = 0; i < repairButtons.length; i++) {
-                const current = repairButtons[i];
-                if (current === target) {
-                    current.classList.add('active');
-                    setActiveSlider(i);
-                } else {
-                    current.classList.remove('active');
+            if (smallScreen) {
+                for (let i = 0; i <  repairButtons.length; i++) {
+                    console.log('i: ', i);
+                    if (repairButtons[i] === target) {
+                        slidersIndex = i;
+                        setSlideButton(i);
+                    }
                 }
+            } else {
+                setActiveButton(target);
             }
         }
+    };
+
+    const setActiveButton = button => {
+        for (let i = 0; i < repairButtons.length; i++) {
+            const current = repairButtons[i];
+            if (current === button) {
+                current.classList.add('active');
+                slidersIndex = i;
+                setActiveSlider(i);
+            } else {
+                current.classList.remove('active');
+            }
+        }
+    };
+
+    const setSlideButton = index => {
+        const prevIndex =  (index === 0) ? repairButtons.length - 1 : index - 1,
+            nextIndex =  (index === repairButtons.length - 1) ? 0 : index + 1;
+
+        repairButtons.forEach((elem, key) => {
+            if (key === index) {
+                elem.style.display = 'inline-block';
+                elem.style.order = 1;
+                setActiveButton(elem);
+            } else if (key === prevIndex) {
+                elem.style.display = 'inline-block';
+                elem.style.order = 0;
+            } else if (key === nextIndex) {
+                elem.style.display = 'inline-block';
+                elem.style.order = 2;
+            } else {
+                elem.style.display = 'none';
+            }
+        });
     };
 
     const reportWindowSize = () => {
         if (window.innerWidth <= maxWidth && smallScreen) return;
 
         if (window.innerWidth <= maxWidth)  {
-        //     smallScreen = true;
-        //     slidersIndex = 1;
-        //     showSlide(currentSlide);
-        //     formulaSlider.style.display = 'flex';
-        //     for (let i = 0; i < slideItems.length; i++) {
-        //         if (i > 2) slideItems[i].style.display = 'none';
-        //     }
-        // 
+            navList.style.justifyContent = 'flex-start';
+            setSlideButton(slidersIndex);
+            smallScreen = true;
+        } else {
+            repairButtons.forEach(elem => elem.style.display = 'inline-block');
+            navList.style.justifyContent = '';
+            smallScreen = false;
         }
     };
 
+    reportWindowSize();
     setActiveSlider(0);
-
-    navList.addEventListener('click', handlerButton);
 
     arrowLeft.addEventListener('click', () => {
         activeSlide--;
@@ -96,7 +127,21 @@ const repairSlider = () => {
         setActiveSlide(activeSlide);
     });
 
+    navList.addEventListener('click', handlerButton);
+
     window.addEventListener('resize', reportWindowSize);
+
+    arrowNavLeft.addEventListener('click', () => {
+        slidersIndex--;
+        if (slidersIndex < 0) slidersIndex =  repairButtons.length - 1;
+        setSlideButton(slidersIndex);
+    });
+
+    arrowNavRight.addEventListener('click', () => {
+        slidersIndex++;
+        if (slidersIndex > repairButtons.length - 1) slidersIndex = 0;
+        setSlideButton(slidersIndex);
+    });
 
 };
 
