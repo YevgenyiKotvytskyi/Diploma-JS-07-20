@@ -1,7 +1,6 @@
 const repairSlider = () => {
 
     const
-        formulaSlider = document.querySelector('.formula-slider'),
         arrowLeft = document.getElementById('repair-types-arrow_left'),
         arrowRight = document.getElementById('repair-types-arrow_right'),
         arrowNavLeft = document.getElementById('nav-arrow-repair-left_base'),
