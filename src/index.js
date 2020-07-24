@@ -6,6 +6,7 @@ import sendForm from './modules/sendForm';
 import linkPravicy from './modules/linkPravicy';
 import formulaHint from './modules/formulaHint';
 import formulaSlider from './modules/formulaSlider';
+import repairSlider from './modules/repairSlider';
 
 phoneShow();
 menuShow();
@@ -15,3 +16,4 @@ sendForm();
 linkPravicy();
 formulaHint();
 formulaSlider();
+repairSlider();
