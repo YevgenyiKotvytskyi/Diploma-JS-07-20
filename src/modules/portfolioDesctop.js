@@ -23,7 +23,7 @@ const portfolioDesctop = () => {
 
     init();
 
-    arrowRight.addEventListener('click', e => {
+    arrowRight.addEventListener('click', () => {
         if (mobileVersion) return;
         tabMax++;
         for (const elem of sliderTabs) {
@@ -35,7 +35,7 @@ const portfolioDesctop = () => {
         showArrows();
     });
 
-    arrowLeft.addEventListener('click', e => {
+    arrowLeft.addEventListener('click', () => {
         if (mobileVersion) return;
         tabMax--;
         tabMin--;
@@ -61,8 +61,6 @@ const portfolioDesctop = () => {
         } else {
             mobileVersion = true;
         }
-        console.log('mobileVersion: ', mobileVersion);
-
     };
 
     reportWindowSize();

@@ -9,6 +9,7 @@ import formulaSlider from './modules/formulaSlider';
 import repairSlider from './modules/repairSlider';
 import portfolioDesctop from './modules/portfolioDesctop';
 import portfolioMobile from './modules/portfolioMobile';
+import portfolioPopUp from './modules/portfolioPopUp';
 
 phoneShow();
 menuShow();
@@ -21,3 +22,4 @@ formulaSlider();
 repairSlider();
 portfolioDesctop();
 portfolioMobile();
+portfolioPopUp();
