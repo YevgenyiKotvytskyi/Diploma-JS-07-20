@@ -15,6 +15,9 @@ import transparencyPopUp from './modules/transparencyPopUp';
 import problemsHint from './modules/problemsHint';
 import problemsSlider from './modules/problemsSlider';
 import designTabs from './modules/designTabs';
+import consultButton from './modules/consultButton';
+import review from './modules/review';
+import scheme from './modules/scheme';
 
 phoneShow();
 menuShow();
@@ -33,3 +36,6 @@ transparencyPopUp();
 problemsHint();
 problemsSlider();
 designTabs();
+consultButton();
+review();
+scheme();
