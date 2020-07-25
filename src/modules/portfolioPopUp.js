@@ -54,7 +54,7 @@ const portfolioPopUp = () => {
 
         slides.forEach(showElement);
         texts.forEach(showElement);
-        
+
         currentCounter.textContent = +key + 1;
         slideIndex = +key;
 

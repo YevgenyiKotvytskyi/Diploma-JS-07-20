@@ -10,6 +10,7 @@ import repairSlider from './modules/repairSlider';
 import portfolioDesctop from './modules/portfolioDesctop';
 import portfolioMobile from './modules/portfolioMobile';
 import portfolioPopUp from './modules/portfolioPopUp';
+import transparencySlider from './modules/transparencySlider';
 
 phoneShow();
 menuShow();
@@ -23,3 +24,4 @@ repairSlider();
 portfolioDesctop();
 portfolioMobile();
 portfolioPopUp();
+transparencySlider();
