@@ -42,6 +42,7 @@ const transparencySlider = () => {
     };
 
     const showSlide = index => {
+        if (smallScreen) return;
         slides.forEach((elem, key) => {
             if (+key === index) {
                 elem.style.display = 'flex';
@@ -65,6 +66,8 @@ const transparencySlider = () => {
 
     window.addEventListener('resize', handlerResize);
     handlerResize();
+    window.addEventListener('resize', handlerResize);
+
 };
 
 export default transparencySlider;

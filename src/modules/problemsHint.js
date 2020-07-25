@@ -1,5 +1,5 @@
-const formulaHint = () => {
-    const formula = document.getElementById('formula'),
+const problemsHint = () => {
+    const problem = document.getElementById('problems'),
         hintOpasity = 1;
     let popUp;
 
@@ -7,7 +7,7 @@ const formulaHint = () => {
         const style = document.createElement('style');
         style.type = 'text/css';
         style.innerHTML = `
-        .formula-item-popup-rotate:before {
+        .problem-item-popup-rotate:before {
             transform: rotateX(180deg);
         }
         `;
@@ -18,20 +18,19 @@ const formulaHint = () => {
     const handlerMouse = e => {
 
         const target = e.target,
-            formulaItem = target.closest('.formula-item__icon');
+            problemItem = target.closest('.problems-item__icon');
         let activePopUp;
 
-        if (formulaItem) {
-            activePopUp = formulaItem.querySelector('.formula-item-popup');
+        if (problemItem) {
+            activePopUp = problemItem.querySelector('.problems-item-popup');
             activePopUp.style.visibility = 'visible';
             activePopUp.style.opacity = hintOpasity;
             activePopUp.style.bottom = '90px';
             activePopUp.style.top = '';
-            activePopUp.classList.remove('formula-item-popup-rotate');
+            activePopUp.classList.remove('problem-item-popup-rotate');
             if (activePopUp.getBoundingClientRect().top < 0) {
                 activePopUp.style.top = '160px';
-                activePopUp.classList.add('formula-item-popup-rotate');
-                //activePopUp.style.background = '../images/formula/item_popup_5.svg';
+                activePopUp.classList.add('problem-item-popup-rotate');
             }
         }
 
@@ -46,9 +45,9 @@ const formulaHint = () => {
 
     styleRotete();
 
-    formula.addEventListener('mouseover', handlerMouse);
+    problem.addEventListener('mouseover', handlerMouse);
 
-    formula.addEventListener('mouseleave', handlerMouse);
+    problem.addEventListener('mouseleave', handlerMouse);
 
 };
-export default formulaHint;
+export default problemsHint;
