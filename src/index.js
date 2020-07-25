@@ -14,6 +14,7 @@ import transparencySlider from './modules/transparencySlider';
 import transparencyPopUp from './modules/transparencyPopUp';
 import problemsHint from './modules/problemsHint';
 import problemsSlider from './modules/problemsSlider';
+import designTabs from './modules/designTabs';
 
 phoneShow();
 menuShow();
@@ -31,3 +32,4 @@ transparencySlider();
 transparencyPopUp();
 problemsHint();
 problemsSlider();
+designTabs();

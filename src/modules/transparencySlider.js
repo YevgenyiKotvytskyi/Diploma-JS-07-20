@@ -64,7 +64,6 @@ const transparencySlider = () => {
         showArrow(slideIndex);
     });
 
-    window.addEventListener('resize', handlerResize);
     handlerResize();
     window.addEventListener('resize', handlerResize);
 
