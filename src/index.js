@@ -11,6 +11,7 @@ import portfolioDesctop from './modules/portfolioDesctop';
 import portfolioMobile from './modules/portfolioMobile';
 import portfolioPopUp from './modules/portfolioPopUp';
 import transparencySlider from './modules/transparencySlider';
+import transparencyPopUp from './modules/transparencyPopUp';
 
 phoneShow();
 menuShow();
@@ -25,3 +26,4 @@ portfolioDesctop();
 portfolioMobile();
 portfolioPopUp();
 transparencySlider();
+transparencyPopUp();

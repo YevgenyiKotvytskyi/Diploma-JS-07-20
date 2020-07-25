@@ -14,7 +14,6 @@ const transparencySlider = () => {
     const showArrow = index => {
         if (index === 0) {
             arrowLeft.style.display = 'none';
-            console.log('arrowLeft: ', arrowLeft);
             arrowRight.style.display = 'flex';
         } else if (index === slides.length - 1) {
             arrowLeft.style.display = 'flex';
@@ -26,7 +25,6 @@ const transparencySlider = () => {
     };
 
     const handlerResize = () => {
-        console.log('smallScreen: ', smallScreen);
         if (window.innerWidth <= maxWidth && smallScreen) return;
 
         if (window.innerWidth <= maxWidth)  {
