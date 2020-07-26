@@ -1,6 +1,8 @@
 const sendForm = () => {
 
-    const submitButton = document.querySelectorAll('form button');
+    const submitButton = document.querySelectorAll('form button'),
+        thank = document.querySelector('.popup.popup-thank'),
+        close = document.querySelector('.popup.popup-thank .close');
 
     const postData = (body, form, succesPost, errorPost) => {
         fetch('./server.php',
@@ -53,6 +55,9 @@ const sendForm = () => {
             [...form.elements].forEach(elem => {
                 if (elem.value) elem.value = '';
             });
+
+            thank.style.visibility = 'visible';
+            console.dir(thank.style);
         };
 
         const errorPost = error => {
@@ -64,6 +69,8 @@ const sendForm = () => {
     };
 
     submitButton.forEach(button => button.addEventListener('click', handlerSubmit));
+
+    close.addEventListener('click', () => thank.style.visibility = 'hidden');
 
 };
 

@@ -46,6 +46,7 @@ const menuScroll = () => {
     const toggePopupMenu = () => {
         if (popupRepair.style.visibility === '') {
             popupRepair.style.visibility  = 'visible';
+            document.body.dispatchEvent(new Event('loadServiceData'));
         } else {
             popupRepair.style.visibility  = '';
         }
@@ -89,7 +90,7 @@ const menuScroll = () => {
         e.preventDefault();
         const target = e.target;
         scrollToLink(target);
-    }
+    };
 
     popupMenu.addEventListener('click', handleMenu);
 

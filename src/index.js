@@ -20,6 +20,7 @@ import review from './modules/review';
 import scheme from './modules/scheme';
 import accordion from './modules/accordion';
 import partners from './modules/partners';
+import service from './modules/service';
 
 phoneShow();
 menuShow();
@@ -43,3 +44,4 @@ review();
 scheme();
 accordion();
 partners();
+service();
