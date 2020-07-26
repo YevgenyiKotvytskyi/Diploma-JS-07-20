@@ -41,7 +41,6 @@ const service = () => {
                 tableTitle.textContent = elem.textContent;
             } else {
                 elem.style.display = (smallScreen) ? 'none' : 'block';
-                console.log('smallScreen: ', smallScreen, elem.style.display);
                 elem.classList.remove('active');
             }
         });

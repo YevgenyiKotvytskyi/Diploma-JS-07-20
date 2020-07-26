@@ -208,12 +208,10 @@ const designTabs = () => {
 
     popupArrrowPhotoLeft.addEventListener('click', () => {
         popupIndexPhoto = showPopUpPhoto(--popupIndexPhoto);
-        console.log('popupIndexPhoto: ', popupIndexPhoto);
     });
 
     popupArrrowPhotoRight.addEventListener('click', () => {
         popupIndexPhoto = showPopUpPhoto(++popupIndexPhoto);
-        console.log('popupIndexPhoto: ', popupIndexPhoto);
     });
 
     window.addEventListener('resize', handlerResize);

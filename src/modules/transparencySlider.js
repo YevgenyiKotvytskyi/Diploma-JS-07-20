@@ -4,7 +4,9 @@ const transparencySlider = () => {
         maxWidth = 1090,
         slides = document.querySelectorAll('.transparency-slider .transparency-item'),
         arrowLeft = document.getElementById('transparency-arrow_left'),
-        arrowRight = document.getElementById('transparency-arrow_right');
+        arrowRight = document.getElementById('transparency-arrow_right'),
+        contract = document.querySelector('.popup.popup-transparency'),
+        currentPage = document.querySelector('#transparency-popup-counter .slider-counter-content__current');
 
     let smallScreen = false,
         slideIndex = 0;
@@ -29,9 +31,9 @@ const transparencySlider = () => {
 
         if (window.innerWidth <= maxWidth)  {
             slideIndex = 0;
+            smallScreen = true;
             showArrow(slideIndex);
             showSlide(slideIndex);
-            smallScreen = true;
         } else {
             smallScreen = false;
             slides.forEach(elem => elem.style.display = 'flex');
@@ -42,7 +44,9 @@ const transparencySlider = () => {
     };
 
     const showSlide = index => {
-        if (smallScreen) return;
+
+        currentPage.textContent = slideIndex + 1;
+        if (!smallScreen) return;
         slides.forEach((elem, key) => {
             if (+key === index) {
                 elem.style.display = 'flex';
@@ -66,6 +70,12 @@ const transparencySlider = () => {
 
     handlerResize();
     window.addEventListener('resize', handlerResize);
+
+    contract.addEventListener('popupTransparencyClose', () => {
+        slideIndex = +currentPage.textContent - 1;
+        showSlide(slideIndex);
+        showArrow(slideIndex);
+    });
 
 };
 

@@ -12,9 +12,6 @@ const transparencyPopUp = () => {
 
     let slideIndex = 0;
 
-    //
-    //transparency_left
-
     const handlerSlider = e => {
         const target = e.target,
             slide = target.closest('.transparency-item');
@@ -54,15 +51,16 @@ const transparencyPopUp = () => {
     };
 
     const init = () => {
-        current.textContent = 1;
+        slideIndex  = +current.textContent;
         total.textContent = slides.length;
-        showArrow(0);
+        showArrow(slideIndex);
     };
 
     slider.addEventListener('click', handlerSlider);
 
     close.addEventListener('click', () => {
         contract.style.visibility = 'hidden';
+        contract.dispatchEvent(new Event('popupTransparencyClose'));
     });
 
     arrowLeft.addEventListener('click', () => {
