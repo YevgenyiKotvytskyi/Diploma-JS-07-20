@@ -1,3 +1,11 @@
+import 'nodelist-foreach-polyfill';
+import "@babel/polyfill";
+import elementClosest from 'element-closest';
+elementClosest(window);
+import 'formdata-polyfill';
+import 'es6-promise/auto';
+import 'fetch-polyfill';
+
 import phoneShow from './modules/phoneShow';
 import menuShow from './modules/menuShow';
 import menuScroll from './modules/menuScroll';

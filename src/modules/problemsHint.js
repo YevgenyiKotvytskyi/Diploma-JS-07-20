@@ -11,7 +11,7 @@ const problemsHint = () => {
             transform: rotateX(180deg);
         }
         `;
-        document.querySelector('head').append(style);
+        document.querySelector('head').appendChild(style);
     };
 
 

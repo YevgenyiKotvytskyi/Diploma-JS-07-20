@@ -18,11 +18,16 @@ const problemsSlider = () => {
             currentSlide = 1;
             showSlide(currentSlide);
             problemSlider.style.display = 'flex';
+            slideItems.forEach(elem => {
+                elem.style.width = "180px";
+                elem.querySelector('.problems-item__descr').style.width = "180px";
+            });
             for (let i = 0; i < slideItems.length; i++) {
                 if (i > 2) slideItems[i].style.display = 'none';
             }
         } else {
             smallScreen = false;
+            slideItems.forEach(elem => elem.style.width = "");
             problemSlider.style.display = 'block';
             slideItems.forEach(elem => elem.style.display = 'flex');
         }
@@ -60,7 +65,6 @@ const problemsSlider = () => {
                 slideItems[i].classList.remove('active-item');
             }
         }
-
     };
 
     init();
