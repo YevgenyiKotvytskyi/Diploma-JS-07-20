@@ -18,7 +18,7 @@ const menuShow = () => {
     closeMenu.addEventListener('click', toggleMenu);
     main.addEventListener('click', e => {
         if (!e.target.closest('.menu')) toggleMenu();
-    })
+    });
 
 };
 
