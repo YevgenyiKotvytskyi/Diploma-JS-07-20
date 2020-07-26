@@ -18,6 +18,8 @@ import designTabs from './modules/designTabs';
 import consultButton from './modules/consultButton';
 import review from './modules/review';
 import scheme from './modules/scheme';
+import accordion from './modules/accordion';
+import partners from './modules/partners';
 
 phoneShow();
 menuShow();
@@ -39,3 +41,5 @@ designTabs();
 consultButton();
 review();
 scheme();
+accordion();
+partners();
