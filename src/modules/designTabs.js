@@ -21,7 +21,8 @@ const designTabs = () => {
         popupTotalCount = document.querySelector('#popup-designs-counter .slider-counter-content__total'),
         popupArrrowPhotoLeft = document.getElementById('popup_design_left'),
         popupArrrowPhotoRight = document.getElementById('popup_design_right'),
-        popupText = document.querySelectorAll('.popup-design-text');
+        popupText = document.querySelectorAll('.popup-design-text'),
+        popupPanel = document.getElementById('nav-list-popup-designs');
 
     let indexSlider = 0,
         indexPhoto = 0,
@@ -32,22 +33,29 @@ const designTabs = () => {
         popupIndexPhoto = 0;
 
 
+
     //#region display
 
     const handlerButtonDesign = e => {
         const target = e.target;
         if (target.tagName.toLowerCase() === 'button') {
-            buttons.forEach((elem, key) => {
-                if (elem === target) {
-                    indexSlider = +key;
-                    elem.classList.add('active');
-                } else {
-                    elem.classList.remove('active');
-                }
-            });
+
+            const showActiveButton =  tmpButtons => {
+                tmpButtons.forEach((elem, key) => {
+                    if (key === indexSlider) {
+                        elem.classList.add('active');
+                    } else {
+                        elem.classList.remove('active');
+                    }
+                });
+            };
+            indexSlider = +target.dataset.key;
+            showActiveButton(buttons);
+            showActiveButton(popupButtons);
             showSlide(indexSlider);
             indexPhoto = 0;
             showPhoto(indexPhoto);
+            showPopupSlider();
         }
     };
 
@@ -106,6 +114,8 @@ const designTabs = () => {
     const init = () => {
         previews.forEach(elem => {
             const blockItems = elem.querySelectorAll('.preview-block__item');
+            buttons.forEach((elem, key) => elem.dataset.key = key);
+            popupButtons.forEach((elem, key) => elem.dataset.key = key);
             blockItems.forEach((elem, key) => elem.dataset.key = key);
         });
 
@@ -114,6 +124,8 @@ const designTabs = () => {
             minOrder = Math.min(minOrder, key);
             maxOrder = Math.max(maxOrder, key);
         });
+
+        popupButtons.forEach((elem, key) =>  elem.style.order = key);
     };
 
     const handlerResize = () => {
@@ -160,8 +172,8 @@ const designTabs = () => {
     //#endregion
 
     //#region PopUp
+
     const showPopupSlider = () => {
-        popup.style.visibility = 'visible';
         popupButtons.forEach((elem, key) => {
             if (key === indexSlider) {
                 elem.classList.add('active');
@@ -203,7 +215,11 @@ const designTabs = () => {
 
     //#endregion
 
-    link.addEventListener('click', showPopupSlider);
+    link.addEventListener('click', () => {
+        popup.style.visibility = 'visible';
+        showPopupSlider();
+    });
+
     close.addEventListener('click', () => popup.style.visibility = 'hidden');
 
     popupArrrowPhotoLeft.addEventListener('click', () => {
@@ -213,6 +229,9 @@ const designTabs = () => {
     popupArrrowPhotoRight.addEventListener('click', () => {
         popupIndexPhoto = showPopUpPhoto(++popupIndexPhoto);
     });
+
+    popupPanel.addEventListener('click', handlerButtonDesign);
+
 
     window.addEventListener('resize', handlerResize);
 

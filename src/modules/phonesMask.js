@@ -1,13 +1,17 @@
 const phonesMask = () => {
 
     const inputPhones = document.querySelectorAll('input[name=phone]'),
-        masked = '+7 (___) ___-__-__';
+        masked = '+7 (___) ___-__-__',
+        startPosistion  = 2;
 
     function mask(event) {
         const keyCode = event.keyCode;
         const template = masked,
-            def = template.replace(/\D/g, ""),
-            val = this.value.replace(/\D/g, "");
+            def = template.replace(/\D/g, "");
+
+        let val = masked.slice(0, startPosistion) + this.value.slice(startPosistion + 1);
+
+        val = val.replace(/\D/g, "");
 
         let i = 0,
             newValue = template.replace(/[_\d]/g, a => (i < val.length ? val.charAt(i++) || def.charAt(i) : a));
@@ -25,7 +29,7 @@ const phonesMask = () => {
             this.value = "";
         }
 
-    };
+    }
 
     const addEventListeners = elems =>  {
         for (const elem of elems) {

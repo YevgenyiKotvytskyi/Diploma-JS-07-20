@@ -37,13 +37,13 @@ const portfolioDesctop = () => {
 
     arrowLeft.addEventListener('click', () => {
         if (mobileVersion) return;
-        tabMax--;
         tabMin--;
         for (const elem of sliderTabs) {
             if (+elem.style.order === tabMax) {
                 elem.style.order = tabMin;
             }
         }
+        tabMax--;
         showArrows();
     });
 

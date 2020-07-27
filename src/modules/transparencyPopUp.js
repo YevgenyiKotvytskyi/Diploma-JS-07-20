@@ -2,6 +2,7 @@
 const transparencyPopUp = () => {
     const
         slider = document.querySelector('.transparency-slider'),
+        items = document.querySelectorAll('.transparency-slider .transparency-item'),
         slides = document.querySelectorAll('.popup-transparency-slider__slide'),
         contract = document.querySelector('.popup.popup-transparency'),
         close = document.querySelector('.popup-transparency .close.mobile-hide'),
@@ -16,6 +17,9 @@ const transparencyPopUp = () => {
         const target = e.target,
             slide = target.closest('.transparency-item');
         if (slide) {
+            slideIndex = +slide.dataset.key;
+            showArrow(slideIndex);
+            showSlide(slideIndex);
             contract.style.visibility = 'visible';
         }
     };
@@ -51,7 +55,7 @@ const transparencyPopUp = () => {
     };
 
     const init = () => {
-        slideIndex  = +current.textContent;
+        items.forEach((elem, key) => elem.dataset.key = key);
         total.textContent = slides.length;
         showArrow(slideIndex);
     };

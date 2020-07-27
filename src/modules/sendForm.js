@@ -24,6 +24,19 @@ const sendForm = () => {
             });
     };
 
+    const showAlert = descr => {
+        const span = document.createElement('span');
+        span.style.color = "red";
+        span.style.color = "red";
+        span.innerHTML = '<b>Выбирете чекбокс для отправки!<b><br>';
+        descr.insertBefore(span, descr.firstChild);
+
+        setTimeout(() => {
+            descr.firstChild.remove();
+        }, 5000);
+
+    };
+
     const handlerSubmit = e => {
 
         e.preventDefault();
@@ -32,9 +45,12 @@ const sendForm = () => {
 
         const isCheckedRequired  = () => {
             for (const elem of [...form.elements]) {
-                if (elem.type.toLowerCase() === 'checkbox' &&
-                    (elem.required || elem.id === 'checkbox1')) {
-                    if (!elem.checked) console.log('Checkbox должен быть выбран!', elem);
+                if (elem.type.toLowerCase() === 'checkbox') {
+                    if (!elem.checked) {
+                        const descr = elem.parentNode.querySelector('.checkbox__descr');
+                        if (descr) showAlert(descr);
+                        console.error('Checkbox должен быть выбран!',);
+                    }
                     return elem.checked;
                 }
             }
@@ -55,9 +71,7 @@ const sendForm = () => {
             [...form.elements].forEach(elem => {
                 if (elem.value) elem.value = '';
             });
-
             thank.style.visibility = 'visible';
-            console.dir(thank.style);
         };
 
         const errorPost = error => {
