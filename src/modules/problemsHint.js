@@ -10,12 +10,20 @@ const problemsHint = () => {
         .problem-item-popup-rotate:before {
             transform: rotateX(180deg);
         }
+
+        @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+            .problems-item-popup {left: -210px;}
+        }
+
         `;
         document.querySelector('head').appendChild(style);
     };
 
+    let smallScreen = (window.innerWidth <= 1024);
 
     const handlerMouse = e => {
+
+        if (smallScreen) return;
 
         const target = e.target,
             problemItem = target.closest('.problems-item__icon');
@@ -29,7 +37,7 @@ const problemsHint = () => {
             activePopUp.style.top = '';
             activePopUp.classList.remove('problem-item-popup-rotate');
             if (activePopUp.getBoundingClientRect().top < 0) {
-                activePopUp.style.top = '160px';
+                activePopUp.style.top = '250px';
                 activePopUp.classList.add('problem-item-popup-rotate');
             }
         }
@@ -48,6 +56,10 @@ const problemsHint = () => {
     problem.addEventListener('mouseover', handlerMouse);
 
     problem.addEventListener('mouseleave', handlerMouse);
+
+    window.addEventListener('resize', () => {
+        smallScreen = (window.innerWidth <= 1024);
+    });
 
 };
 export default problemsHint;

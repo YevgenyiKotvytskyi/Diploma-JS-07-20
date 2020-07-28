@@ -5,6 +5,7 @@ elementClosest(window);
 import 'formdata-polyfill';
 import 'es6-promise/auto';
 import 'fetch-polyfill';
+import 'custom-event-polyfill';
 
 import phoneShow from './modules/phoneShow';
 import menuShow from './modules/menuShow';
@@ -29,6 +30,7 @@ import scheme from './modules/scheme';
 import accordion from './modules/accordion';
 import partners from './modules/partners';
 import service from './modules/service';
+
 
 phoneShow();
 menuShow();

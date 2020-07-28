@@ -1,4 +1,4 @@
-import Сarousel from './carousel.class';
+import Сarousel from './class/carousel.class';
 
 const review = () => {
 

@@ -29,8 +29,7 @@ const transparencySlider = () => {
     const handlerResize = () => {
         if (window.innerWidth <= maxWidth && smallScreen) return;
 
-        if (window.innerWidth <= maxWidth)  {
-            slideIndex = 0;
+        if (window.innerWidth <= maxWidth) {
             smallScreen = true;
             showArrow(slideIndex);
             showSlide(slideIndex);
@@ -45,7 +44,7 @@ const transparencySlider = () => {
 
     const showSlide = index => {
 
-        currentPage.textContent = slideIndex + 1;
+        // currentPage.textContent = slideIndex + 1;
         if (!smallScreen) return;
         slides.forEach((elem, key) => {
             if (+key === index) {
@@ -72,9 +71,13 @@ const transparencySlider = () => {
     window.addEventListener('resize', handlerResize);
 
     contract.addEventListener('popupTransparencyClose', () => {
+        console.log('popupTransparencyClose: ');
         slideIndex = +currentPage.textContent - 1;
-        showSlide(slideIndex);
-        showArrow(slideIndex);
+        console.log('slideIndex: ', slideIndex);
+        smallScreen = false;
+        handlerResize();
+        // showSlide(slideIndex);
+        // showArrow(slideIndex);
     });
 
 };

@@ -68,12 +68,12 @@ const service = () => {
             if (elem.title) {
                 nav.insertAdjacentHTML('beforeend', buttonHTML(elem.title, buttonIndex++));
                 const table = createRepairListTable(elem.priceList);
-                tableContent.append(table);
+                tableContent.appendChild(table);
             }
             if (elem.date)  {
                 try {
                     const [ day, month, year ] = elem.date.split('.'),
-                        newDate = new Date(`${month} ${day} ${year}`);
+                        newDate = new Date(`${year}-${month}-${day}`);
                     date.textContent = newDate
                         .toLocaleDateString('ru', { year: 'numeric', month: 'long', day: 'numeric' });
                 } catch (error) {

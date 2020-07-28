@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.10.4",
+    "custom-event-polyfill": "^1.0.7",
     "element-closest": "^3.0.2",
     "es6-promise": "^4.2.8",
     "fetch-polyfill": "^0.8.2",

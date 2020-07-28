@@ -46,7 +46,16 @@ const menuScroll = () => {
     const toggePopupMenu = () => {
         if (popupRepair.style.visibility === '') {
             popupRepair.style.visibility  = 'visible';
-            document.body.dispatchEvent(new Event('loadServiceData'));
+
+            let event;
+            if (typeof(Event) === 'function') {
+                event = new Event('loadServiceData');
+            } else {
+                event = document.createEvent('Event');
+                event.initEvent('loadServiceData', true, true);
+            }
+
+            document.body.dispatchEvent(event);
         } else {
             popupRepair.style.visibility  = '';
         }
