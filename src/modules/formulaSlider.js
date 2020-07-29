@@ -7,10 +7,18 @@ const formulaSlider = () => {
         slideItems = document.querySelectorAll('.formula-slider .formula-item');
 
     let currentSlide = 0,
-        smallScreen = false;
+        smallScreen = false,
+        small576 = false;
+
 
 
     function reportWindowSize() {
+
+        if ((window.innerWidth <= 576 && !small576) || (window.innerWidth > 576 && small576)) {
+            small576 = (window.innerWidth <= 576);
+            showSlide(currentSlide);
+        }
+
         if (window.innerWidth <= maxWidth && smallScreen) return;
 
         if (window.innerWidth <= maxWidth)  {
@@ -26,6 +34,7 @@ const formulaSlider = () => {
             formulaSlider.style.display = 'block';
             slideItems.forEach(elem => elem.style.display = 'flex');
         }
+
     }
 
     const init = () => {
@@ -46,11 +55,11 @@ const formulaSlider = () => {
                 slideItems[i].style.display = 'flex';
                 slideItems[i].style.order = 1;
                 slideItems[i].classList.add('active-item');
-            } else if (i === leftItem) {
+            } else if (i === leftItem && !small576) {
                 slideItems[i].style.display = 'flex';
                 slideItems[i].style.order = 0;
                 slideItems[i].classList.remove('active-item');
-            } else if (i === rightItem) {
+            } else if (i === rightItem && !small576) {
                 slideItems[i].style.display = 'flex';
                 slideItems[i].style.order = 2;
                 slideItems[i].classList.remove('active-item');

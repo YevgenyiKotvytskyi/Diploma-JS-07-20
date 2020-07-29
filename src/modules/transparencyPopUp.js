@@ -5,7 +5,6 @@ const transparencyPopUp = () => {
         items = document.querySelectorAll('.transparency-slider .transparency-item'),
         slides = document.querySelectorAll('.popup-transparency-slider__slide'),
         contract = document.querySelector('.popup.popup-transparency'),
-        close = document.querySelector('.popup-transparency .close.mobile-hide'),
         current =  document.querySelector('.popup-transparency .slider-counter-content__current'),
         total =  document.querySelector('.popup-transparency .slider-counter-content__total'),
         arrowLeft = document.getElementById('transparency_left'),
@@ -60,12 +59,19 @@ const transparencyPopUp = () => {
         showArrow(slideIndex);
     };
 
-    slider.addEventListener('click', handlerSlider);
-
-    close.addEventListener('click', () => {
+    const handlerClose = () => {
         contract.style.visibility = 'hidden';
-        contract.dispatchEvent(new Event('popupTransparencyClose'));
-    });
+		let event;
+		if (typeof(Event) === 'function') {
+			event = new Event('popupTransparencyClose');
+		} else {
+			event = document.createEvent('Event');
+			event.initEvent('popupTransparencyClose', true, true);
+		}		
+        contract.dispatchEvent(event);
+    };
+
+    slider.addEventListener('click', handlerSlider);
 
     arrowLeft.addEventListener('click', () => {
         slideIndex = (slideIndex === 0) ? slides.length - 1 : slideIndex - 1;
@@ -75,6 +81,11 @@ const transparencyPopUp = () => {
     arrowRight.addEventListener('click', () => {
         slideIndex = (slideIndex === slides.length - 1) ? 0 : slideIndex + 1;
         showSlide(slideIndex);
+    });
+
+    document.addEventListener('click', e => {
+        const target = e.target;
+        if (target.closest('.close')) handlerClose();
     });
 
     init();

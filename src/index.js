@@ -30,7 +30,7 @@ import scheme from './modules/scheme';
 import accordion from './modules/accordion';
 import partners from './modules/partners';
 import service from './modules/service';
-
+import closePopUp from './modules/closePopUp';
 
 phoneShow();
 menuShow();
@@ -55,3 +55,4 @@ scheme();
 accordion();
 partners();
 service();
+closePopUp();

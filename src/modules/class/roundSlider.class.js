@@ -10,6 +10,7 @@ class RoundSlider {
 
         this.currentSlide = 0;
         this.smallScreen = false;
+        this.small576 = false;
 
     }
 
@@ -41,11 +42,11 @@ class RoundSlider {
                 this.slideItems[i].style.display = 'flex';
                 this.slideItems[i].style.order = 1;
                 this.slideItems[i].classList.add('active-item');
-            } else if (i === leftItem) {
+            } else if (i === leftItem && !this.small576) {
                 this.slideItems[i].style.display = 'flex';
                 this.slideItems[i].style.order = 0;
                 this.slideItems[i].classList.remove('active-item');
-            } else if (i === rightItem) {
+            } else if (i === rightItem && !this.small576) {
                 this.slideItems[i].style.display = 'flex';
                 this.slideItems[i].style.order = 2;
                 this.slideItems[i].classList.remove('active-item');
@@ -59,6 +60,12 @@ class RoundSlider {
     }
 
     sizeChange() {
+
+        if ((window.innerWidth <= 576 && !this.small576) || (window.innerWidth > 576 && this.small576) ) {
+            this.small576 = (window.innerWidth <= 576);
+            this.showSlide(this.currentSlide);
+        }
+
 
         if (window.innerWidth <= this.maxWidth && this.smallScreen) return;
 

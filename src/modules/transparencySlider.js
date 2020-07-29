@@ -71,13 +71,9 @@ const transparencySlider = () => {
     window.addEventListener('resize', handlerResize);
 
     contract.addEventListener('popupTransparencyClose', () => {
-        console.log('popupTransparencyClose: ');
         slideIndex = +currentPage.textContent - 1;
-        console.log('slideIndex: ', slideIndex);
         smallScreen = false;
         handlerResize();
-        // showSlide(slideIndex);
-        // showArrow(slideIndex);
     });
 
 };

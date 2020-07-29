@@ -104,6 +104,28 @@ const sendForm = () => {
 
     close.addEventListener('click', () => thank.style.visibility = 'hidden');
 
+    const handlerKey = e => {
+        const target = e.target,
+            name = /[а-яА-ЯёЁ\s]+/g,
+            input = target.value;
+
+        let template = null;
+
+        if (input && target.matches('form input[name=name]')) template = name;
+        if (template) {
+            const arrInput = input.match(template);
+            if (arrInput) {
+                target.value = arrInput.join('');
+            } else {
+                target.value = '';
+            }
+        }
+
+    };
+
+    document.addEventListener('input', handlerKey);
+
+
 };
 
 export default sendForm;

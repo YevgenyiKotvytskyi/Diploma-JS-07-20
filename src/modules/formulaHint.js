@@ -29,6 +29,7 @@ const formulaHint = () => {
 
         if (formulaItem) {
             activePopUp = formulaItem.querySelector('.formula-item-popup');
+            activePopUp.closest('.row').style.zIndex = '1';
             activePopUp.style.visibility = 'visible';
             activePopUp.style.opacity = hintOpasity;
             activePopUp.style.bottom = '90px';
@@ -44,6 +45,7 @@ const formulaHint = () => {
         if (popUp !== activePopUp) {
             if (popUp) {
                 popUp.style.visibility = 'hidden';
+                popUp.closest('.row').style.zIndex = '';
             }
             popUp = activePopUp;
         }

@@ -57,7 +57,7 @@ const menuScroll = () => {
 
             document.body.dispatchEvent(event);
         } else {
-            popupRepair.style.visibility  = '';
+          //  popupRepair.style.visibility  = '';
         }
     };
 
@@ -103,7 +103,7 @@ const menuScroll = () => {
 
     popupMenu.addEventListener('click', handleMenu);
 
-    close.addEventListener('click', toggePopupMenu);
+    //close.addEventListener('click', toggePopupMenu);
 
     popupRepair.addEventListener('click', handlePopupMenu);
 

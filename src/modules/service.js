@@ -11,6 +11,7 @@ const service = () => {
         ;
 
     const SCREEN = 1025;
+
     //#region Navigation
 
     let
@@ -145,7 +146,16 @@ const service = () => {
 
         if (link && !link.closest('.popup-menu')) {
             popupRepair.style.visibility  = 'visible';
-            document.body.dispatchEvent(new Event('loadServiceData'));
+			
+			let event;
+			if (typeof(Event) === 'function') {
+				event = new Event('loadServiceData');
+			} else {
+				event = document.createEvent('Event');
+				event.initEvent('loadServiceData', true, true);
+			}
+			
+            document.body.dispatchEvent(event);
         }
     };
 
@@ -165,8 +175,13 @@ const service = () => {
 
 
     const showArrow = index => {
-        arrowLeft.style.display = (index === 0) ? 'none' : 'block';
-        arrowRight.style.display = (index === buttons.length - 1) ? 'none' : 'block';
+        if (smallScreen) {
+            arrowLeft.style.display = (index === 0) ? 'none' : 'block';
+            arrowRight.style.display = (index === buttons.length - 1) ? 'none' : 'block';
+        } else {
+            arrowLeft.style.display = 'none';
+            arrowRight.style.display = 'none';
+        }
     };
 
     handlerResize();

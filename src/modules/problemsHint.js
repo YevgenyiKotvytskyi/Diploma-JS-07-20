@@ -3,7 +3,8 @@ const problemsHint = () => {
         hintOpasity = 1;
     let popUp;
 
-    const styleRotete = () => {
+    const init = () => {
+        problem.style.zIndex = 10;
         const style = document.createElement('style');
         style.type = 'text/css';
         style.innerHTML = `
@@ -31,6 +32,7 @@ const problemsHint = () => {
 
         if (problemItem) {
             activePopUp = problemItem.querySelector('.problems-item-popup');
+            activePopUp.closest('.row').style.zIndex = '10';
             activePopUp.style.visibility = 'visible';
             activePopUp.style.opacity = hintOpasity;
             activePopUp.style.bottom = '90px';
@@ -45,13 +47,14 @@ const problemsHint = () => {
         if (popUp !== activePopUp) {
             if (popUp) {
                 popUp.style.visibility = 'hidden';
+                popUp.closest('.row').style.zIndex = '';
             }
             popUp = activePopUp;
         }
 
     };
 
-    styleRotete();
+    init();
 
     problem.addEventListener('mouseover', handlerMouse);
 

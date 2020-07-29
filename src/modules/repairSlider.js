@@ -77,20 +77,12 @@ const repairSlider = () => {
     };
 
     const setSlideButton = index => {
-        const prevIndex =  (index === 0) ? repairButtons.length - 1 : index - 1,
-            nextIndex =  (index === repairButtons.length - 1) ? 0 : index + 1;
 
         repairButtons.forEach((elem, key) => {
             if (key === index) {
                 elem.style.display = 'inline-block';
                 elem.style.order = 1;
                 setActiveButton(elem);
-            } else if (key === prevIndex) {
-                elem.style.display = 'inline-block';
-                elem.style.order = 0;
-            } else if (key === nextIndex) {
-                elem.style.display = 'inline-block';
-                elem.style.order = 2;
             } else {
                 elem.style.display = 'none';
             }
@@ -98,10 +90,12 @@ const repairSlider = () => {
     };
 
     const reportWindowSize = () => {
+
         if (window.innerWidth <= maxWidth && smallScreen) return;
 
         if (window.innerWidth <= maxWidth)  {
-            navList.style.justifyContent = 'flex-start';
+            navList.style.justifyContent = 'space-around';
+            navList.style.minWidth  = 0;
             setSlideButton(slidersIndex);
             smallScreen = true;
         } else {
